@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import {useTimer} from 'use-timer'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+  const{time,start, pause, reset, status} = useTimer()
+  return(
+    <>
+   <div>
+    <button onClick={start}>Start</button>
+    <button onClick={pause}>pause</button>
+    <button onClick={reset}>Reset</button>
+   </div>
+   <p>Start Timer: {time}</p>
+   {status === 'RUNNING' && <p>Running.....</p>}
+    </>
+  )
 }
 
 export default App;
